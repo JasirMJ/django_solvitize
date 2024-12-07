@@ -1,0 +1,42 @@
+# Environment 
+venv
+
+# Logs
+.log
+.log.*
+.log-*
+*.log
+
+# Database
+*.db
+*.db-journal
+
+# Translations
+*.mo
+
+# Django
+*.pyc
+*.pyo
+
+# Ignore Python cache directories
+__pycache__
+*.py[cod]
+
+# Media
+/media/*
+
+# Static
+/static/*
+
+# egg-info
+*.egg-info
+
+
+# Database
+db.sqlite3
+
+# dist
+dist
+
+# build
+build

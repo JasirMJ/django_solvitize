@@ -1,0 +1,7 @@
+include LICENSE
+include README.md
+include requirements.txt  # If you have one
+recursive-include django_solvitize *
+recursive-exclude * __pycache__ *.pyc *.pyo *.orig
+exclude solvitize
+exclude django_settings.py  # Adjust for specific files if needed
