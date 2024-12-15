@@ -17,10 +17,10 @@ class FirebaseUserLookupView(APIView):
     def post(self, request):
         request_data = request.data
         serializer = FirebaseUserLookupRequestSerializer(data=request.data)
+        api_key = request.headers.get("Api-Key")
 
         if not serializer.is_valid():
             return ResponseFunction(0, serializer.errors,{})
-        
 
         api_log = APIRequestResponseLog.objects.create(
             method='POST',
@@ -30,7 +30,7 @@ class FirebaseUserLookupView(APIView):
         id_token = serializer.validated_data["idToken"]
         try:
             response = requests.post(
-                FIREBASE_AUTHENTICATE_API, params={"key": FIREBASE_WEB_API_KEY}, json={"idToken": id_token},
+                FIREBASE_AUTHENTICATE_API, params={"key": api_key}, json={"idToken": id_token},
             )
 
             # Log Firebase response status code and data

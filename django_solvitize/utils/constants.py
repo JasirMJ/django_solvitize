@@ -43,4 +43,3 @@ SIMPLE_OTP = [
 
 
 FIREBASE_AUTHENTICATE_API = 'https://identitytoolkit.googleapis.com/v1/accounts:lookup'
-FIREBASE_WEB_API_KEY = 'AIzaSyD7aWT-T_UE87gouY8eAw3TGZ_VZIiplVs'
