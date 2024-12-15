@@ -40,3 +40,7 @@ SIMPLE_OTP = [
     "8383", "8484", "8585", "8686", "8787", "8989", "9090", "9191", "9292", "9393",
     "9494", "9595", "9696", "9797", "9898", "9999", "1233", "1010", "1331", "1212",
 ]
+
+
+FIREBASE_AUTHENTICATE_API = 'https://identitytoolkit.googleapis.com/v1/accounts:lookup'
+FIREBASE_WEB_API_KEY = 'AIzaSyD7aWT-T_UE87gouY8eAw3TGZ_VZIiplVs'

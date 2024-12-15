@@ -18,5 +18,5 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include('django_solvitize.sampleapp.urls')),
+    path('', include('django_solvitize.firebase.urls')),
 ]
