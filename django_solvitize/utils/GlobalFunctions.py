@@ -88,3 +88,46 @@ def ValidateRequest(required, data_dic, **kwargs):
         'Print if there where errors'
         print(errors)
     return errors
+
+
+def format_api_response(response):
+    """
+    Methos used to validate and format external api response.
+    """
+
+    try:
+        response_data = response.json()
+    except ValueError:
+        response_data = response.text
+
+    status_code = response.status_code
+    bln_status = False
+    message = None
+    response_data = None
+
+    if status_code >= 200 and status_code < 300:
+        bln_status = True
+        message = "Request Successful."
+        data = response_data
+    elif status_code == 400:
+        message = "Bad Request: The server could not understand the request."
+        if isinstance(response_data, dict) and "error" in response_data:
+            data = response_data['error']
+    elif status_code == 401:
+        message = "Unauthorized: Invalid authentication credentials."
+    elif status_code == 403:
+        message = "Forbidden: You do not have permission to access this resource."
+    elif status_code == 404:
+        message = "Not Found: The requested resource could not be found."
+    elif status_code == 500:
+        message = "Internal Server Error: The server encountered an error."
+    elif status_code == 503:
+        message = "Service Unavailable: The server is temporarily unavailable."
+    elif not status_code:
+        message = f"HTTP {status_code}: Unexpected error."
+
+    return {
+        "status": bln_status,
+        "message": message,
+        "data": response_data,
+    }
