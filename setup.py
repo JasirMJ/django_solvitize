@@ -9,7 +9,7 @@ class CustomSDist(sdist):
 
 setup(
     name="django_solvitize",  # Replace with your package name
-    version="0.0.3",
+    version="0.0.4",
     packages=find_packages(
         where=".",
         include=["django_solvitize", "django_solvitize.*"]
