@@ -1,4 +1,5 @@
-from firebase_admin import messaging 
+from firebase_admin import messaging, credentials
+import firebase_admin 
 
 
 def send_notification(device_data, title,image, body, notification_type, data=None):
@@ -100,3 +101,12 @@ def subscribe_or_unsubscribe_topic(optn_type, fcm_token, topic_name):
     except Exception as e:
         print(f"Errorsubscribing or unsubscribing from topic {topic_name}: {e}")
         return {"error": str(e)}
+    
+
+def initialise_firebase_sdk(file_path):
+    if not firebase_admin._apps:
+        cred = credentials.Certificate(file_path)
+        firebase_admin.initialize_app(cred)
+        print("Firebase Admin SDK initialized")
+    else:
+        print("Firebase Admin SDK already initialized")
