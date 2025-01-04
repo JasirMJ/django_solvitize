@@ -85,8 +85,8 @@ def send_notification(notification_data, title, image, body, notification_type, 
 def subscribe_or_unsubscribe_topic(optn_type, fcm_token, topic_name):
     try:
         if optn_type == 'subscribe':
-             response = messaging.subscribe_to_topic([fcm_token], topic_name)
-             message = "Subscribed successfully"
+            response = messaging.subscribe_to_topic([fcm_token], topic_name)
+            message = "Subscribed successfully"
         else:
             response = messaging.unsubscribe_from_topic([fcm_token], topic_name)
             message = "Unsubscribed successfully"
@@ -96,7 +96,8 @@ def subscribe_or_unsubscribe_topic(optn_type, fcm_token, topic_name):
             "failure_count": response.failure_count,
             "errors": [error.reason for error in response.errors],  # Extract error reasons if any
         }
-        print(f"Successfully subscribed to {topic_name}: {response_data}")
+        print(f"{message}, Topic: {topic_name}: {response_data}")
+        
         return {"message": message, "response": response_data}
     except Exception as e:
         print(f"Errorsubscribing or unsubscribing from topic {topic_name}: {e}")

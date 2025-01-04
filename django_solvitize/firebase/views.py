@@ -7,7 +7,7 @@ from .serializers import FirebaseUserLookupRequestSerializer, FirebaseUserLookup
 from django_solvitize.utils.GlobalFunctions import *
 from django_solvitize.utils.constants import *
 from .models import APIRequestResponseLog
-from .auth.notifications import send_notification, subscribe_or_unsubscribe_topic
+from .notifications.notifications import send_notification, subscribe_or_unsubscribe_topic
 
 
 
