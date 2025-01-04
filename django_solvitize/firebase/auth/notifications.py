@@ -2,11 +2,11 @@ from firebase_admin import messaging, credentials
 import firebase_admin 
 
 
-def send_notification(device_data, title,image, body, notification_type, data=None):
+def send_notification(notification_data, title, image, body, notification_type, data=None):
     """
     Sends a push notification to a specific device or topic.
 
-    :param device_data: FCM device token or Firebase topic name (e.g., 'global')
+    :param notification_data: FCM device token or Firebase topic name (e.g., 'global')
     :param title: Notification title
     :param image: Notification image URL
     :param body: Notification body
@@ -22,11 +22,11 @@ def send_notification(device_data, title,image, body, notification_type, data=No
         }
 
         if notification_type == 'topic':
-            message = messaging.Message(**message_data, topic=device_data)
+            message = messaging.Message(**message_data, topic=notification_data)
         elif notification_type == 'token':
             message = messaging.Message(
                 **message_data,
-                token=device_data,
+                token=notification_data,
                 apns=messaging.APNSConfig(
                     # headers={
                     #     "apns-priority": "10",  # High priority
