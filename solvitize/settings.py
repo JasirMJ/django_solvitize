@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     
     # 'django_solvitize.sampleapp',
     'django_solvitize.ErrorApp',
+    'django_solvitize.core',
+    'django_solvitize.firebase',
 ]
 
 MIDDLEWARE = [
