@@ -55,15 +55,17 @@ def super_optimize_image(image, max_width, max_height, target_size_kb):
         # Extract EXIF metadata from original image (if available)
         exif = img.info.get("exif")
 
+        save_kwargs = {
+            "format": "JPEG",# Convert all images to JPEG
+            "quality": quality,# Compression quality
+            "optimize": True,# Enables additional compression optimizations
+            "progressive": True# Progressive JPEG loads faster in browsers
+        }
+        if exif is not None:
+            save_kwargs["exif"] = exif# preserve metadata
+
         # Save the image into the buffer as JPEG.
-        img.save(
-            buffer,
-            format="JPEG",       # Convert all images to JPEG
-            quality=quality,     # Compression quality
-            optimize=True,       # Enables additional compression optimizations
-            progressive=True,     # Progressive JPEG loads faster in browsers
-            exif=exif            # preserve metadata
-        )
+        img.save(buffer, **save_kwargs)
 
         # Check the size of the compressed image in KB
         size_kb = buffer.tell() / 1024      

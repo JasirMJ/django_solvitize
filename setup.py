@@ -9,7 +9,7 @@ class CustomSDist(sdist):
 
 setup(
     name="django_solvitize",  # Replace with your package name
-    version="0.0.10",
+    version="0.0.12",
     packages=find_packages(
         where=".",
         include=["django_solvitize", "django_solvitize.*"]
@@ -17,6 +17,8 @@ setup(
     include_package_data=True,
     install_requires=[
         "Django>=3.2",  # Add dependencies required for your package
+        "Pillow>=12.1.0",  # For image processing
+        "pillow_heif>=1.3.0",  # For HEIC/HEIF support
         
     ],
     author="Mohamed Jasir K P",

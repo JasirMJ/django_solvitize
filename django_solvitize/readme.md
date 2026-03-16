@@ -56,6 +56,22 @@ COMPRESS_TARGET_SIZE_KB=200, Means that images will be compressed to a maximum s
 
 By default this method can compress max by keeping image quality to 30%., beyound that it wont compress
 
+
+## To support for heic images, call this method
+
+install
+
+```
+pip install pillow_heif 
+```
+
+then in settings.py
+```
+import pillow_heif
+# To use heic images
+pillow_heif.register_heif_opener()
+```
+
 ## To reduce historical data, call this method
 
 ```
